@@ -1,5 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace PoryectoCatedraPrograIII.Models
 {
@@ -7,19 +6,25 @@ namespace PoryectoCatedraPrograIII.Models
     {
         [Key]
         public int Id { get; set; }
-        public string NombreEvento { get; set; }
-        public string TipoEvento { get; set; }
+
+        [Required, MaxLength(150)]
+        public string Nombre { get; set; }
+
+        public string Tipo { get; set; }
+
         public string Direccion { get; set; }
+
         public DateTime HoraInicio { get; set; }
+
         public DateTime HoraFinal { get; set; }
+
         public decimal PrecioEntrada { get; set; }
-        public string Fotografia { get; set; }
+
+        public string FotoLugar { get; set; }
+
         public string Descripcion { get; set; }
-        public string VideoUrl { get; set; }
-        public int NegocioParticipanteId { get; set; }
-        [ForeignKey("NegocioParticipanteId")]
-        public Tiendas Tienda { get; set; }
-        public DateTime CreadoEn { get; set; } = DateTime.Now;
-        public DateTime ActualizadoEn { get; set; } = DateTime.Now;
+
+        public List<EventoNegocio> NegociosParticipantes { get; set; }
+
     }
 }

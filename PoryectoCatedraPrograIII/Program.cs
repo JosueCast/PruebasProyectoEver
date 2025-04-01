@@ -1,4 +1,12 @@
+using Microsoft.EntityFrameworkCore;
+using PoryectoCatedraPrograIII.Data;
+
 var builder = WebApplication.CreateBuilder(args);
+
+// Configurar Entity Framework Core con SQL Server con nuestra cadena por default agregada en en el appsetting.json
+builder.Services.AddDbContext<DBContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
 
 // Add services to the container.
 

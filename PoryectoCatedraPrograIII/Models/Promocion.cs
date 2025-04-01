@@ -1,37 +1,26 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace PoryectoCatedraPrograIII.Models
 {
     public class Promocion
     {
         [Key]
-        public int Id { get; set; }
+        public int PromocionId { get; set; }  // Definimos la clave primaria
 
         [Required]
-        public int TiendaId { get; set; }
-
-        public int? ProductoId { get; set; }
+        public string Titulo { get; set; }
 
         public string Descripcion { get; set; }
 
-        [Column(TypeName = "decimal(5,2)")]
-        public decimal Descuento { get; set; }
+        public decimal PrecioOriginal { get; set; }
 
-        [Required]
+        public decimal PrecioDescuento { get; set; }
+
         public DateTime FechaInicio { get; set; }
 
-        [Required]
-        public DateTime FechaFn { get; set; }
+        public DateTime FechaFin { get; set; }
 
-        public DateTime CreadoEn { get; set; } = DateTime.Now;
+        public bool Activo { get; set; }  // Indica si la promoción está activa
 
-        // Relaciones
-        [ForeignKey("TiendaId")]
-        public Tiendas Tienda { get; set; }
-
-        [ForeignKey("ProductoId")]
-        public Productos Producto { get; set; }
     }
-
 }
